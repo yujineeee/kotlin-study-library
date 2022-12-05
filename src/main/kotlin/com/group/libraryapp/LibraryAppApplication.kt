@@ -4,7 +4,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class LibraryAppApplication
+open class LibraryAppApplication
 
 fun main(args: Array<String>) {
     runApplication<LibraryAppApplication>(*args)
