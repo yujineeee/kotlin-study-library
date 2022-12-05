@@ -62,8 +62,13 @@ class UserServiceTest  @Autowired  constructor(
     @DisplayName("유저 수정이 정상 동작한다.")
     fun updateUsersTest() {
         //given
-        val savedUser = userRepository.save(User("A", null))
-        val request = UserUpdateRequest(savedUser.id, "B")
+        val savedUser = userRepository.save(
+            User(
+                "A",
+                null
+            )
+        )
+        val request = UserUpdateRequest(savedUser.id!!, "B")
 
         //when
         userService.updateUserName(request);
@@ -77,10 +82,15 @@ class UserServiceTest  @Autowired  constructor(
     @DisplayName("유저 삭제가 정상 동작한다.")
     fun deleteUsersTest() {
         //given
-        val savedUser = userRepository.save(User("A", null))
+        val savedUser = userRepository.save(
+            User(
+                "A",
+                null
+            )
+        )
 
         //when
-        userService.deleteUser("A");
+        userService.deleteUser(savedUser.name);
 
         //then
         assertThat(userRepository.findAll()).isEmpty()
