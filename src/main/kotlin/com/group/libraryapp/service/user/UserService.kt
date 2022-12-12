@@ -45,7 +45,8 @@ class UserService(
 
     @Transactional(readOnly = true)
     fun getUserLoanHistories(): List<UserLoanHistoryResponse> {
-        return userRepository.findAll().map{user ->
+        //시작부터 한번에 가져와서 N+1을 해결하자
+        return userRepository.findAllWithHistories().map{user ->
             UserLoanHistoryResponse(
                 name = user.name,
                 books = user.userLoanHistories.map {history ->
