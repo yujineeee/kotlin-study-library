@@ -18,6 +18,9 @@ class UserLoanHistory(
 
     ) {
 
+    val isReturn : Boolean
+        get() = this.status == UserLoanStatus.RETURNRED
+
     fun doReturn() {
         this.status = UserLoanStatus.RETURNRED
     }
